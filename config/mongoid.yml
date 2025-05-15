@@ -1,0 +1,26 @@
+---
+development:
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URI'] %>
+      options:
+        connect_timeout: 15
+        server_selection_timeout: 5
+        max_pool_size: 5
+        socket_timeout: 5
+test:
+  clients:
+    default:
+      database: mongo_app_test
+      hosts:
+        - localhost:27017
+      options:
+        server_api:
+          version: "1"
+
+production:
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URI'] %>
+      options:
+        retry_writes: true
